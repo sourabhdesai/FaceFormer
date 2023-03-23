@@ -25,6 +25,7 @@ PyTorch implementation for the paper:
 - Check the required python packages in `requirements.txt`.
 - ffmpeg
 - [MPI-IS/mesh](https://github.com/MPI-IS/mesh)
+- `sudo apt install  libosmesa6  libosmesa6-dev`
 
 ## Data
 
@@ -48,12 +49,17 @@ Download the pretrained models from [biwi.pth](https://drive.google.com/file/d/1
 
 - to animate a mesh in BIWI topology, run: 
 	```
-	python demo.py --model_name biwi --wav_path "demo/wav/test.wav" --dataset BIWI --vertice_dim 70110  --feature_dim 128 --period 25 --fps 25 --train_subjects "F2 F3 F4 M3 M4 M5" --test_subjects "F1 F5 F6 F7 F8 M1 M2 M6" --condition M3 --subject M1
+	python demo.py --model_name biwi --wav_path "demo/wav/resampled/sr16000/test.wav" --dataset BIWI --vertice_dim 70110  --feature_dim 128 --period 25 --fps 25 --train_subjects "F2 F3 F4 M3 M4 M5" --test_subjects "F1 F5 F6 F7 F8 M1 M2 M6" --condition M3 --subject M1
+	```
+
+	- Sourabh Note: I found that the output video didn't have sound. To add the original input audio to the output video, you can use the following command:
+	```
+	ffmpeg -i ./demo/output/test_M1_condition_M3.mp4 -i ./demo/wav/resampled/sr16000/test.wav -vcodec copy output.mp4
 	```
 
 - to animate a mesh in FLAME topology, run: 
 	```
-	python demo.py --model_name vocaset --wav_path "demo/wav/test.wav" --dataset vocaset --vertice_dim 15069 --feature_dim 64 --period 30  --fps 30  --train_subjects "FaceTalk_170728_03272_TA FaceTalk_170904_00128_TA FaceTalk_170725_00137_TA FaceTalk_170915_00223_TA FaceTalk_170811_03274_TA FaceTalk_170913_03279_TA FaceTalk_170904_03276_TA FaceTalk_170912_03278_TA" --test_subjects "FaceTalk_170809_00138_TA FaceTalk_170731_00024_TA" --condition FaceTalk_170913_03279_TA --subject FaceTalk_170809_00138_TA
+	python demo.py --model_name vocaset --wav_path "demo/wav/resampled/sr16000/test.wav" --dataset vocaset --vertice_dim 15069 --feature_dim 64 --period 30  --fps 30  --train_subjects "FaceTalk_170728_03272_TA FaceTalk_170904_00128_TA FaceTalk_170725_00137_TA FaceTalk_170915_00223_TA FaceTalk_170811_03274_TA FaceTalk_170913_03279_TA FaceTalk_170904_03276_TA FaceTalk_170912_03278_TA" --test_subjects "FaceTalk_170809_00138_TA FaceTalk_170731_00024_TA" --condition FaceTalk_170913_03279_TA --subject FaceTalk_170809_00138_TA
 	```
 	This script will automatically generate the rendered videos in the `demo/output` folder. You can also put your own test audio file (.wav format) under the `demo/wav` folder and specify the argument `--wav_path "demo/wav/test.wav"` accordingly.
 

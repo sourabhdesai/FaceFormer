@@ -21,7 +21,7 @@ import argparse
 os.environ['PYOPENGL_PLATFORM'] = 'osmesa' #egl
 import pyrender
 import trimesh
-from psbody.mesh import Mesh
+from mesh import Mesh
 
 # The implementation of rendering is borrowed from VOCA: https://github.com/TimoBolkart/voca/blob/master/utils/rendering.py
 def render_mesh_helper(args,mesh, t_center, rot=np.zeros(3), tex_img=None,  z_offset=0):
