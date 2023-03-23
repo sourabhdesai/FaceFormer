@@ -1,0 +1,28 @@
+[tool.poetry]
+name = "faceformer"
+version = "0.1.0"
+description = ""
+authors = ["Sourabh Desai <sourabhdesai@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = ">=3.8,<3.10"
+numpy = "1.23.5"
+scipy = "1.10.1"
+librosa = "0.8.1"
+tqdm = "^4.65.0"
+torch = "1.9.0"
+torchvision = "0.10.0"
+torchaudio = "0.9.0"
+transformers = "4.6.1"
+trimesh = "3.9.27"
+opencv-python = "4.7.0.72"
+typing = "3.7.4.3"
+typing-extensions = "4.4.0"
+mesh = {path = "../voca/mesh", develop = true}
+pyrender = "^0.1.45"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
